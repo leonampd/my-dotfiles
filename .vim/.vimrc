@@ -5,6 +5,7 @@
 " ##
 " ## References
 " ## - https://dougblack.io/words/a-good-vimrc.html
+" ## - http://ctrlpvim.github.io/ctrlp.vim/
 " ##################
 
 
@@ -20,6 +21,13 @@ set wrapscan
 set display=lastline
 set cursorline          " add guideline 
 set showmatch           " highlight matching [{()}]
+set wildmenu
+set wildmode=longest:full,full
 
 " jk is escape (from @piiih)
 inoremap jk <esc>
+
+" :::::::::: Netrw Settings ::::::::::
+let g:netrw_banner=0              " Remove netrw banner.
+
+set runtimepath^=~/.vim/bundle/ctrlp.vim
