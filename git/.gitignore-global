@@ -1,0 +1,43 @@
+# .gitignore_global
+
+######
+# OS
+.DS_Store
+Thumbs.db
+######
+
+######
+# IDE
+nbproject
+.idea
+.swp
+*.swp
+.floo
+.flooignore
+######
+
+######
+# PHP
+composer.phar
+######
+
+######
+# Python
+*.pyc
+######
+
+######
+# Java
+*.class
+######
+
+######
+# JavaScript
+node-dependencies-*-dev
+node-dependencies-*-prod
+######
+
+######
+# Git
+!.gitkeep
+######
