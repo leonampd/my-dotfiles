@@ -30,4 +30,12 @@ inoremap jk <esc>
 " :::::::::: Netrw Settings ::::::::::
 let g:netrw_banner=0              " Remove netrw banner.
 
-set runtimepath^=~/.vim/bundle/ctrlp.vim
+
+call plug#begin('~/.vim/plugged')
+
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim' 
+
+call plug#end()
+
+map <C-p> :call fzf#run({'sink': 'e'})<CR>
