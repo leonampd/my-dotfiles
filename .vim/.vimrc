@@ -23,9 +23,10 @@ set cursorline          " add guideline
 set showmatch           " highlight matching [{()}]
 set wildmenu
 set wildmode=longest:full,full
+set noswapfile
 
 " jk is escape (from @piiih)
-inoremap jk <esc>
+inoremap jk <ESC>
 
 " :::::::::: Netrw Settings ::::::::::
 let g:netrw_banner=0              " Remove netrw banner.
@@ -39,3 +40,4 @@ Plug 'junegunn/fzf.vim'
 call plug#end()
 
 map <C-p> :call fzf#run({'sink': 'e'})<CR>
+nnoremap <silent> <C-t> :call fzf#run({'sink':'tabe','down':'30%'})<CR>
