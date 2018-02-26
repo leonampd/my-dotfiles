@@ -1,3 +1,13 @@
+" This is my neovim configuration
+"
+" References
+"
+" https://github.com/piiih/vimfiles
+" https://github.com/thalesmello/vimfiles
+" https://github.com/devdrops/my-dotfiles
+" https://github.com/thalesmello/slides/tree/master/2017/neovim-from-scratch
+"
+
 call plug#begin()
 " fzf
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
