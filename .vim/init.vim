@@ -67,6 +67,7 @@ set wildmode=longest:full,full
 set noswapfile
 set shiftwidth=4
 set inccommand=split
+set nowrap
 
 let mapleader="\<space>"
 let g:netrw_banner=0
@@ -89,3 +90,6 @@ map <C-p> :call fzf#run({'sink': 'e'})<CR>
 nnoremap <silent> <C-t> :call fzf#run({'sink':'tabe','down':'30%'})<CR>
 
 inoremap <leader>; <ESC>A;
+
+" Open nvim config - init.vim
+nnoremap <C-g> :tabe ~/.config/nvim/init.vim<CR>
