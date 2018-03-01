@@ -75,6 +75,13 @@ let g:netrw_banner=0
 inoremap jk <ESC>
 nnoremap <leader>; A;<esc>
 nnoremap <leader>w :w<CR>
+
+" better :quit
+nnoremap <leader>q :q<CR>
+
+" better close file
+nnoremap <leader>c :Ex<CR>
+
 nnoremap <leader>sv :source $MYVIMRC<CR>
 
 " sublime fuzzyfinder like
