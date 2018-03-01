@@ -14,7 +14,7 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
 " theme
-Plug 'mhartington/oceanic-next'
+Plug 'morhetz/gruvbox'
 
 " better sintax highlight
 Plug 'sheerun/vim-polyglot'
@@ -43,12 +43,14 @@ if (has("termguicolors"))
  set termguicolors
 endif
 
+set t_Co=256
+
 " Theme
 syntax enable
-let g:oceanic_next_terminal_bold = 1
-let g:oceanic_next_terminal_italic = 1
-colorscheme OceanicNext
-let g:airline_theme='oceanicnext'
+colorscheme gruvbox
+set background=dark
+
+let g:airline_theme='gruvbox'
 let g:airline_powerline_fonts=1
 
 set number
