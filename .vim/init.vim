@@ -33,6 +33,9 @@ Plug 'jiangmiao/auto-pairs'
 " php code sniffer
 " Plug 'joonty/vim-phpqa'
 
+" highlights unwanted spaces
+Plug 'ntpeters/vim-better-whitespace'
+
 call plug#end()
 
 " For Neovim 0.1.3 and 0.1.4
