@@ -36,6 +36,8 @@ Plug 'jiangmiao/auto-pairs'
 " highlights unwanted spaces
 Plug 'ntpeters/vim-better-whitespace'
 
+" emmet
+Plug 'mattn/emmet-vim'
 call plug#end()
 
 " For Neovim 0.1.3 and 0.1.4
