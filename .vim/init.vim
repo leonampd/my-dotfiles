@@ -38,6 +38,9 @@ Plug 'ntpeters/vim-better-whitespace'
 
 " emmet
 Plug 'mattn/emmet-vim'
+
+"vim highlight words
+Plug 'lfv89/vim-interestingwords'
 call plug#end()
 
 " For Neovim 0.1.3 and 0.1.4
