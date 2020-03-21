@@ -65,7 +65,7 @@ set number
 set relativenumber
 set hidden
 set expandtab
-set clipboard=unnamed
+set clipboard=unnamedplus
 set wrapscan
 set display=lastline
 set cursorline          " add guideline 
