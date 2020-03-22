@@ -168,16 +168,11 @@ bindsym $mod+r mode "resize"
 bar {
 }
 
-## Some of my custom keybindings and customizations
+################# Some of my custom keybindings and customizations
 
-bindsym XF86AudioRaiseVolume exec "amixer -q sset Master,0 1+ unmute"
-bindsym XF86AudioLowerVolume exec "amixer -q sset Master,0 1- unmute"
-bindsym XF86AudioMute exec "amixer -q sset Master,0 toggle"
-
-
+## Launcher
 set $mode_launcher Launch [c]google-chrome [i]intellij
 bindsym $mod+o mode "$mode_launcher"
-
 mode "$mode_launcher" {
     bindsym c exec google-chrome
     bindsym i exec intellij-idea-community
@@ -185,6 +180,13 @@ mode "$mode_launcher" {
     bindsym Escape mode "default"
     bindsym Return mode "default"
 }
+
+## Sound configs
+exec_always --no-startup-id systemctl enable pulseaudio.service --user
+exec_always --no-startup-id pulseaudio --start
+bindsym XF86AudioRaiseVolume exec "amixer -q sset Master,0 1+ unmute"
+bindsym XF86AudioLowerVolume exec "amixer -q sset Master,0 1- unmute"
+bindsym XF86AudioMute exec "amixer -q sset Master,0 toggle"
 
 ## Laund my polybar config
 exec_always --no-startup-id ~/my-dotfiles/polybar/launch.sh
