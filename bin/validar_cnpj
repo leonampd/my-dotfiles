@@ -1,0 +1,5 @@
+#!/bin/bash
+
+CNPJ=$1
+
+http --print=b -f POST https://www.4devs.com.br/ferramentas_online.php acao=validar_cnpj txt_cnpj=$CNPJ
