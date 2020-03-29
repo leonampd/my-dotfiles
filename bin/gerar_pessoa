@@ -1,0 +1,7 @@
+#!/bin/bash
+
+echo "Generating a person using 4devs and HTTPie";
+echo ""
+
+http --print=b -f POST https://www.4devs.com.br/ferramentas_online.php acao=gerar_pessoa
+
