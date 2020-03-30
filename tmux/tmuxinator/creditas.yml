@@ -14,11 +14,13 @@ windows:
       # 'before' represents legacy functionality and will be deprecated in a future release, in favour of 'after'
       # synchronize: after
       panes:
-        -
+        - parrotsay
         - cd ~/forticlientsslvpn
-        - aws-intellij
+        -
   - troubleshooting:
       layout: even-horizontal
       panes:
         -
-        - vim
+        - vim:
+          - mkdir /tmp/troubleshooting && touch /tmp/troubleshooting/query.sql && cd /tmp/troubleshooting
+          - nvim query.sql
