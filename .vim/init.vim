@@ -41,6 +41,10 @@ Plug 'mattn/emmet-vim'
 
 "vim highlight words
 Plug 'lfv89/vim-interestingwords'
+
+" plugin to use gist inside vim
+Plug 'mattn/vim-gist'
+Plug 'mattn/webapi-vim'
 call plug#end()
 
 " For Neovim 0.1.3 and 0.1.4
