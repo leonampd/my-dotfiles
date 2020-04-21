@@ -1,0 +1,8 @@
+#!/bin/bash
+
+## Update remote branch using git commit --amend --no-edit and push --force-with-lease
+
+CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
+git add . \
+    && git commit --amend --no-edit \
+    && git push origin $CURRENT_BRANCH --force-with-lease
