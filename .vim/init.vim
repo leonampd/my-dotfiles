@@ -48,6 +48,9 @@ Plug 'mattn/webapi-vim'
 
 " NerdTree
 Plug 'preservim/nerdtree'
+
+" WakaTime
+Plug 'wakatime/vim-wakatime'
 call plug#end()
 
 "NerdTree
