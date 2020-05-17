@@ -33,7 +33,7 @@ width = 100%
 height = 27
 ;offset-x = 1%
 ;offset-y = 1%
-radius = 6.0
+radius = 0.0
 fixed-center = false
 
 background = ${colors.background}
@@ -55,9 +55,9 @@ font-0 = fixed:pixelsize=10;1
 font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
 font-2 = siji:pixelsize=10;1
 
-modules-left = bspwm i3
+modules-left = bspwm i3 github
 modules-center = mpd
-modules-right = filesystem xbacklight alsa pulseaudio xkeyboard memory cpu wlan eth battery temperature date powermenu
+modules-right = alsa pulseaudio memory cpu wlan eth wireless-network battery temperature date powermenu
 
 tray-position = right
 tray-padding = 2
@@ -360,6 +360,37 @@ animation-discharging-2 = 
 animation-discharging-foreground = ${colors.foreground-alt}
 animation-discharging-framerate = 750
 
+[module/github]
+type = internal/github
+token = ${file:~/.polybar-token}
+user = leonampd
+empty-notifications = false
+interval = 600
+label = Github: %notifications%
+
+[module/wireless-network]
+type = internal/network
+interface = wlp2s0
+interval = 1.0
+ping-interval = 10
+
+format-connected = <ramp-signal> <label-connected>
+label-connected =  %downspeed%    %upspeed%
+label-disconnected =    not connected
+label-disconnected-foreground = #66
+
+ramp-signal-0 = 
+ramp-signal-1 = 
+ramp-signal-2 = 
+ramp-signal-3 = 
+ramp-signal-4 = 
+
+animation-packetloss-0 = 
+animation-packetloss-0-foreground = #ffa64c
+animation-packetloss-1 = 
+animation-packetloss-1-foreground = ${bar/top.foreground}
+animation-packetloss-framerate = 500
+
 [module/temperature]
 type = internal/temperature
 thermal-zone = 0
@@ -421,3 +452,4 @@ margin-top = 5
 margin-bottom = 5
 
 ; vim:ft=dosini
+
