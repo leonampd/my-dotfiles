@@ -117,6 +117,20 @@ bindsym $mod+8 workspace $ws8
 bindsym $mod+9 workspace $ws9
 bindsym $mod+0 workspace $ws10
 
+## display configs
+set $noteDisplayOutput eDP-1
+set $externalDisplayOutput HDMI-1
+set $primaryDisplay $externalDisplayOutput
+set $secondaryDisplay $noteDisplayOutput
+
+workspace 1 output $externalDisplayOutput
+workspace 2 output $noteDisplayOutput
+
+# set external display as primary output
+exec_always --no-startup-id xrandr --output $externalDisplayOutput --primary
+exec_always --no-startup-id xrandr --output $externalDisplayOutput --auto --left-of $noteDisplayOutput
+workspace $ws1 output $externalDisplayOutput
+
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $ws1
 bindsym $mod+Shift+2 move container to workspace $ws2
