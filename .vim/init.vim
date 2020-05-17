@@ -46,18 +46,11 @@ Plug 'lfv89/vim-interestingwords'
 Plug 'mattn/vim-gist'
 Plug 'mattn/webapi-vim'
 
-" NerdTree
-Plug 'preservim/nerdtree'
-
 " WakaTime
 Plug 'wakatime/vim-wakatime'
-call plug#end()
 
-"NerdTree
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
-map <C-f> :NERDTreeFocus<CR>
-map <C-n> :NERDTreeToggle<CR>
+Plug 'metakirby5/codi.vim'
+call plug#end()
 
 " For Neovim 0.1.3 and 0.1.4
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
