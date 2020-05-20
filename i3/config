@@ -187,12 +187,14 @@ bar {
 
 ################# Some of my custom keybindings and customizations
 
-## Launcher
-set $mode_launcher Launch [c]google-chrome [i]intellij
+## open most used apps
+set $mode_launcher Launch [c]google-chrome [i]intellij [s]slack [Shift+s]spotify
 bindsym $mod+o mode "$mode_launcher"
 mode "$mode_launcher" {
-    bindsym c exec google-chrome
-    bindsym i exec intellij-idea-community
+    bindsym c exec google-chrome, mode "default"
+    bindsym i exec intellij-idea-communit, mode "default"
+    bindsym s exec slack, mode "default"
+    bindsym Shift+s exec spotify, mode "default"
 
     bindsym Escape mode "default"
     bindsym Return mode "default"
