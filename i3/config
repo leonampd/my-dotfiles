@@ -230,3 +230,8 @@ exec_always --no-startup-id feh --bg-fill ~/my-dotfiles/.wallpaper.png
 
 # set keyboard layout
 exec setxkbmap -model abnt2 -layout br -variant ,abnt2
+
+# colors
+client.focused          #665c53 #282828 #b8bb26 #2e9ef4 #d65d0e
+client.focused_inactive #1d2021 #504945 #ebdbb2 #2e9ef4 #3c3836
+client.unfocused        #32302f #32302f #ebdbb2 #2e9ef4 32302f
