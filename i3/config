@@ -124,7 +124,9 @@ set $primaryDisplay $externalDisplayOutput
 set $secondaryDisplay $noteDisplayOutput
 
 workspace 1 output $externalDisplayOutput
-workspace 2 output $noteDisplayOutput
+workspace 2 output $externalDisplayOutput
+workspace 3 output $noteDisplayOutput
+workspace 4 output $noteDisplayOutput
 
 # set external display as primary output
 exec_always --no-startup-id xrandr --output $externalDisplayOutput --primary
