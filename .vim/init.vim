@@ -50,6 +50,9 @@ Plug 'mattn/webapi-vim'
 Plug 'wakatime/vim-wakatime'
 
 Plug 'metakirby5/codi.vim'
+
+" Vim smart as VSCode
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
 
 " For Neovim 0.1.3 and 0.1.4
@@ -77,7 +80,7 @@ set expandtab
 set clipboard=unnamedplus
 set wrapscan
 set display=lastline
-set cursorline          " add guideline 
+set cursorline          " add guideline
 set showmatch           " highlight matching [{()}]
 set wildmenu
 set wildmode=longest:full,full
