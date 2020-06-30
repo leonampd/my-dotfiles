@@ -148,6 +148,7 @@ bindsym $mod+Shift+0 move container to workspace $ws10
 # workspace assignment
 assign [class="(?i)google-chrome"] 1
 assign [class="(?i)slack"] 3
+assign [class="(?i)forticlient"] 5
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
