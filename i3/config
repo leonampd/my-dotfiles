@@ -130,7 +130,7 @@ workspace 4 output $noteDisplayOutput
 
 # set external display as primary output
 exec_always --no-startup-id xrandr --output $externalDisplayOutput --primary
-exec_always --no-startup-id xrandr --output $externalDisplayOutput --auto --left-of $noteDisplayOutput
+exec_always --no-startup-id xrandr --output $externalDisplayOutput --auto --right-of $noteDisplayOutput
 workspace $ws1 output $externalDisplayOutput
 
 # move focused container to workspace
