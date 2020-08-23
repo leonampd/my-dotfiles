@@ -63,6 +63,7 @@ plugins=(
   zsh-syntax-highlighting
   zsh-autosuggestions
   docker
+  z
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -95,7 +96,7 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias gs="git status"
+alias gs="git status -u"
 alias gc="git checkout"
 alias ll="ls -lha"
 alias gl="git log --oneline --decorate"
