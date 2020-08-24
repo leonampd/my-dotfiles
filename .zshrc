@@ -64,6 +64,8 @@ plugins=(
   zsh-autosuggestions
   docker
   z
+  web-search
+  lein
 )
 
 source $ZSH/oh-my-zsh.sh
