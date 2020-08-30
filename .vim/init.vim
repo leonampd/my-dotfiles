@@ -53,7 +53,16 @@ Plug 'metakirby5/codi.vim'
 
 " Vim smart as VSCode
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+" clojure
+Plug 'tpope/vim-fireplace', {'for': 'clojure'}
+Plug 'guns/vim-sexp', {'for': 'clojure'}
+Plug 'liquidz/vim-iced', {'for': 'clojure'}
+Plug 'junegunn/rainbow_parentheses.vim' , {'for': 'clojure'}
 call plug#end()
+
+" Enable vim-iced's default key mapping
+let g:iced_enable_default_key_mappings = v:true
 
 " For Neovim 0.1.3 and 0.1.4
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
