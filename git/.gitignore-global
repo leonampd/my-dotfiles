@@ -42,3 +42,20 @@ node-dependencies-*-prod
 # Git
 !.gitkeep
 ######
+
+#####
+# Clojure
+.lein*
+.clj-kondo
+target
+####
+
+####
+# LSP
+.lsp
+####
+
+####
+# Exercism
+.exercism
+####
