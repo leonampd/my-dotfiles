@@ -30,9 +30,6 @@ Plug 'airblade/vim-gitgutter'
 " auto complete for "{[(
 Plug 'jiangmiao/auto-pairs'
 
-" php code sniffer
-" Plug 'joonty/vim-phpqa'
-
 " highlights unwanted spaces
 Plug 'ntpeters/vim-better-whitespace'
 
