@@ -55,7 +55,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'tpope/vim-fireplace', {'for': 'clojure'}
 Plug 'guns/vim-sexp', {'for': 'clojure'}
 Plug 'liquidz/vim-iced', {'for': 'clojure'}
-Plug 'junegunn/rainbow_parentheses.vim' , {'for': 'clojure'}
+Plug 'luochen1990/rainbow'
 call plug#end()
 
 " Enable vim-iced's default key mapping
