@@ -33,15 +33,8 @@ Plug 'jiangmiao/auto-pairs'
 " highlights unwanted spaces
 Plug 'ntpeters/vim-better-whitespace'
 
-" emmet
-Plug 'mattn/emmet-vim'
-
 "vim highlight words
 Plug 'lfv89/vim-interestingwords'
-
-" plugin to use gist inside vim
-Plug 'mattn/vim-gist'
-Plug 'mattn/webapi-vim'
 
 " WakaTime
 Plug 'wakatime/vim-wakatime'
@@ -52,9 +45,6 @@ Plug 'metakirby5/codi.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " clojure
-Plug 'tpope/vim-fireplace', {'for': 'clojure'}
-Plug 'guns/vim-sexp', {'for': 'clojure'}
-Plug 'liquidz/vim-iced', {'for': 'clojure'}
 Plug 'luochen1990/rainbow'
 call plug#end()
 
