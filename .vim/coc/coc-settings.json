@@ -1,35 +1,23 @@
 {
+  "coc.source.conjure.priority": 99,
+  "diagnostic.errorSign":"\uf444",
+  "diagnostic.warningSign":"\uf445",
+  "diagnostic.infoSign":"\uf48b",
+  "diagnostic.hintSign":"\uf48b",
+  "suggest.maxCompleteItemCount": 15,
+  "suggest.noselect": false,
+  "suggest.removeDuplicateItems": true,
+
   "languageserver": {
     "clojure-lsp": {
-      "command": "clojure-lsp",
-      "filetypes": [
-        "clojure"
-      ],
-      "rootPatterns": [
-        "project.clj",
-        "deps.edn"
-      ],
-      "additionalSchemes": [
-        "jar",
-        "zipfile"
-      ],
-      "trace.server": "verbose",
-      "initializationOptions": {
-        "source-paths": [
-          "src",
-          "test"
-        ],
-        "keep-require-at-start?": true,
-        "project-specs": [
-          {
-            "project-path": "deps.edn",
-            "classpath-cmd": [
-              "clj",
-              "-Spath"
-            ]
-          }
-        ]
-      }
+      "command": "bash",
+      "args": ["-c", "clojure-lsp"],
+      "filetypes": ["clojure"],
+      "rootPatterns": ["project.clj", "deps.edn"],
+      "additionalSchemes": ["zipfile", "jar"],
+      "disableDiagnostics": false,
+      "trace.server": "on",
+      "initializationOptions": {}
     }
   }
 }
