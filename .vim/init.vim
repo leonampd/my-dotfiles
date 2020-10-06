@@ -13,6 +13,9 @@ call plug#begin()
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
+" easy align
+Plug 'junegunn/vim-easy-align'
+
 " theme
 Plug 'morhetz/gruvbox'
 
@@ -43,13 +46,24 @@ Plug 'metakirby5/codi.vim'
 
 " Vim smart as VSCode
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neoclide/coc-highlight', { 'do': 'yarn install --frozen-lockfile && yarn build' }
+Plug 'iamcco/coc-vimlsp', { 'do': 'yarn install --frozen-lockfile && yarn build' }
 
-" clojure
+"""""""""""" Clojure
 Plug 'luochen1990/rainbow'
-call plug#end()
 
-" Enable vim-iced's default key mapping
-let g:iced_enable_default_key_mappings = v:true
+" structural editing
+Plug 'guns/vim-sexp', { 'for': 'clojure' }
+Plug 'tpope/vim-sexp-mappings-for-regular-people', { 'for': 'clojure' }
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'
+
+Plug 'guns/vim-clojure-static', { 'for': 'clojure' }
+Plug 'Olical/conjure', {'for' : 'clojure' }
+Plug 'tpope/vim-dispatch', { 'for' : 'clojure' }
+Plug 'clojure-vim/vim-jack-in', { 'for' : 'clojure' }
+Plug 'radenling/vim-dispatch-neovim', { 'for' : 'clojure' }
+call plug#end()
 
 " For Neovim 0.1.3 and 0.1.4
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
@@ -63,6 +77,7 @@ set t_Co=256
 
 " Theme
 syntax enable
+filetype plugin indent on
 colorscheme gruvbox
 set background=dark
 
@@ -89,9 +104,24 @@ set nowritebackup
 set cmdheight=2
 set updatetime=300
 set shortmess+=c
+set ruler
+set colorcolumn=81
+set signcolumn=yes
 
 let mapleader="\<space>"
+let maplocalleader=','
 let g:netrw_banner=0
+let g:rainbow_active = 1
+
+let g:conjure#mapping#def_word = "gd"
+let g:conjure#mapping#doc_word = "K"
+
+""""""""""""""""""""""""""
+" Coc
+let g:coc_global_extensions = ['coc-json', 'coc-conjure', 'coc-vimlsp']
+let g:airline#extensions#coc#enabled = 1
+let airline#extensions#coc#error_symbol = ' '
+let airline#extensions#coc#warning_symbol = ' '
 
 " Use tab for trigger completion with characters ahead and navigate.
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
@@ -135,6 +165,7 @@ endfunction
 
 " Highlight the symbol and its references when holding the cursor.
 autocmd CursorHold * silent call CocActionAsync('highlight')
+autocmd CursorHoldI * silent call CocActionAsync('highlight')
 
 " Symbol renaming.
 nmap <leader>rn <Plug>(coc-rename)
@@ -149,24 +180,21 @@ nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
-" better esc
+""""""""""""""""""""""""""""""
+"Key bindings
 inoremap jk <ESC>
-nnoremap <leader>; A;<esc>
-nnoremap <leader>w :w<CR>
+nnoremap <leader>w :w<CR> " write file
+nnoremap <leader>q :q<CR> " better quit
 
-" better :quit
-nnoremap <leader>q :q<CR>
+" togggle rainbow
+nmap <silent> <leader>rp :RainbowToggle<R> " toggles rainbow plugin
 
-" better close file
-nnoremap <leader>c :Ex<CR>
-
-nnoremap <leader>sv :source $MYVIMRC<CR>
+xmap ga <Plug>(EasyAlign) " Start interactive EasyAlign in visual mode (e.g. vipga)
+nmap ga <Plug>(EasyAlign) " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 
 " sublime fuzzyfinder like
-map <C-p> :call fzf#run({'sink': 'e'})<CR>
-nnoremap <silent> <C-t> :call fzf#run({'sink':'tabe','down':'30%'})<CR>
+map <C-p> :call fzf#run({'sink': 'e'})<CR>                               " opens fuzzyfinder in current buffer
+nnoremap <silent> <C-t> :call fzf#run({'sink':'tabe','down':'30%'})<CR>  " open file in new tab
 
-inoremap <leader>; <ESC>A;
-
-" Open nvim config - init.vim
-nnoremap <C-g> :tabe ~/.config/nvim/init.vim<CR>
+command! ReloadVimrc :source $MYVIMRC " Reload vimrc config
+command! Vimrc :vs $MYVIMRC           " opens vim config anywhere
