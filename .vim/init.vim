@@ -183,20 +183,26 @@ nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
 """"""""""""""""""""""""""""""
-"Key bindings
+" Key bindings
+
+" better esc
 inoremap jk <ESC>
-nnoremap <leader>w :w<CR> " write file
-nnoremap <leader>q :q<CR> " better quit
+
+" better write
+nnoremap <leader>w :w<CR>
+
+" better quit
+nnoremap <leader>q :q<CR>
 
 " togggle rainbow
-nmap <silent> <leader>rp :RainbowToggle<R> " toggles rainbow plugin
+nmap <silent> <leader>rp :RainbowToggle<R>
 
-xmap ga <Plug>(EasyAlign) " Start interactive EasyAlign in visual mode (e.g. vipga)
-nmap ga <Plug>(EasyAlign) " Start interactive EasyAlign for a motion/text object (e.g. gaip)
+xmap ga <Plug>(EasyAlign)
+nmap ga <Plug>(EasyAlign)
 
 " sublime fuzzyfinder like
-map <C-p> :call fzf#run({'sink': 'e'})<CR>                               " opens fuzzyfinder in current buffer
-nnoremap <silent> <C-t> :call fzf#run({'sink':'tabe','down':'30%'})<CR>  " open file in new tab
+map <C-p> :call fzf#run({'sink': 'e'})<CR>
+nnoremap <silent> <C-t> :call fzf#run({'sink':'tabe','down':'30%'})<CR>
 
 command! ReloadVimrc :source $MYVIMRC " Reload vimrc config
 command! Vimrc :vs $MYVIMRC           " opens vim config anywhere
