@@ -61,6 +61,8 @@ Plug 'tpope/vim-surround'
 Plug 'guns/vim-clojure-static', { 'for': 'clojure' }
 Plug 'Olical/conjure', {'for' : 'clojure' }
 Plug 'tpope/vim-dispatch', { 'for' : 'clojure' }
+Plug 'tpope/vim-fireplace', { 'for' : 'clojure' }
+Plug 'tpope/vim-salve', { 'for' : 'clojure' }
 Plug 'clojure-vim/vim-jack-in', { 'for' : 'clojure' }
 Plug 'radenling/vim-dispatch-neovim', { 'for' : 'clojure' }
 call plug#end()
