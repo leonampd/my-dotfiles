@@ -36,7 +36,6 @@ alias gc="git checkout"
 alias ll="ls -lha"
 alias gl="git log --oneline --decorate"
 alias dc="docker-compose"
-alias git=hub
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
@@ -61,3 +60,15 @@ function proj() {
 function dotfiles() {
   cd ~/my-dotfiles && nvim .
 }
+
+function restartgpg() {
+  export GPG_TTY=$(tty)
+  export PINENTRY_USER_DATA="USE_CURSES=1"
+
+  echo "test" | gpg2 --clearsign
+}
+
+export GPG_TTY=$(tty)
+export PINENTRY_USER_DATA="USE_CURSES=1"
+
+source ~/.nurc
