@@ -206,3 +206,7 @@ nnoremap <silent> <C-t> :call fzf#run({'sink':'tabe','down':'30%'})<CR>
 
 command! ReloadVimrc :source $MYVIMRC " Reload vimrc config
 command! Vimrc :vs $MYVIMRC           " opens vim config anywhere
+
+function! FormatJSON()
+:%!python -m json.tool
+endfunction
