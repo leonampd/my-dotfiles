@@ -1,6 +1,11 @@
 # .gitignore_global
 
 ######
+# projects
+project-notes
+######
+
+######
 # OS
 .DS_Store
 Thumbs.db
