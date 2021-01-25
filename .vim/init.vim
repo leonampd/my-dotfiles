@@ -117,6 +117,7 @@ let g:rainbow_active = 1
 
 let g:conjure#mapping#def_word = "gd"
 let g:conjure#mapping#doc_word = "K"
+let g:conjure#log#botright = "true"
 
 """"""""""""""""""""""""""
 " Coc
