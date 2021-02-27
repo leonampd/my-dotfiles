@@ -9,6 +9,10 @@
 "
 
 call plug#begin()
+" LSP
+Plug 'neovim/nvim-lspconfig'
+Plug 'nvim-lua/completion-nvim'
+
 " fzf
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -37,6 +41,8 @@ Plug 'lfv89/vim-interestingwords'
 Plug 'wakatime/vim-wakatime'
 
 Plug 'metakirby5/codi.vim'
+
+Plug 'Olical/conjure', {'tag': 'v4.14.1'}
 call plug#end()
 
 " For Neovim 0.1.3 and 0.1.4
@@ -58,6 +64,13 @@ set background=dark
 let g:airline_theme='gruvbox'
 let g:airline_powerline_fonts=1
 
+" Setup LSP
+lua << EOF
+  require'lspconfig'.clojure_lsp.setup{ on_attach=require'completion'.on_attach }
+EOF
+
+" set completeopt to have a better completion experience
+set completeopt=menuone,noinsert,noselect
 set number
 set relativenumber
 set hidden
@@ -90,6 +103,12 @@ let g:rainbow_active = 1
 let g:conjure#mapping#def_word = "gd"
 let g:conjure#mapping#doc_word = "K"
 let g:conjure#log#botright = "true"
+" use static analysis engine to autocomplete, but get results also from REPL
+" if it is available
+let g:completion_auto_change_source = 1
+let g:completion_chain_complete_list = {'clojure': [{'complete_items': ['conjure', 'lsp', 'snippet']}]}
+" Set completion list to match using fuzzy strategy
+let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
 
 """"""""""""""""""""""""""""""
 " Key bindings
