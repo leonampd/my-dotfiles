@@ -9,6 +9,8 @@
 "
 
 call plug#begin()
+Plug 'sheerun/vim-polyglot'
+
 " LSP
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/completion-nvim'
@@ -43,6 +45,13 @@ Plug 'wakatime/vim-wakatime'
 Plug 'metakirby5/codi.vim'
 
 Plug 'Olical/conjure', {'tag': 'v4.14.1'}
+Plug 'm00qek/completion-conjure'
+Plug 'tpope/vim-dispatch'
+Plug 'clojure-vim/vim-jack-in'
+Plug 'radenling/vim-dispatch-neovim'
+Plug 'tpope/vim-salve'
+" structural edition
+Plug 'guns/vim-sexp', { 'for': 'clojure' } | Plug 'tpope/vim-sexp-mappings-for-regular-people', { 'for': 'clojure' }
 call plug#end()
 
 " For Neovim 0.1.3 and 0.1.4
@@ -112,6 +121,14 @@ let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
 
 """"""""""""""""""""""""""""""
 " Key bindings
+
+nnoremap <silent> K <cmd>lua vim.lsp.buf.hover()<CR>
+nnoremap <silent> <c-]> <cmd>lua vim.lsp.buf.definition()<CR>
+
+nnoremap <silent> gr <cmd>lua vim.lsp.buf.references()<CR>
+nnoremap <silent> g0 <cmd>lua vim.lsp.buf.document_symbol()<CR>
+nnoremap <silent> gW <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
+nnoremap <silent> gA <cmd>lua vim.lsp.buf.code_action()<CR>
 
 " better esc
 inoremap jk <ESC>
