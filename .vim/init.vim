@@ -19,6 +19,10 @@ Plug 'nvim-lua/completion-nvim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+
 " theme
 Plug 'morhetz/gruvbox'
 
@@ -148,6 +152,12 @@ nmap ga <Plug>(EasyAlign)
 " sublime fuzzyfinder like
 map <C-p> :call fzf#run({'sink': 'e'})<CR>
 nnoremap <silent> <C-t> :call fzf#run({'sink':'tabe','down':'30%'})<CR>
+
+" telescope keybindings
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
 command! ReloadVimrc :source $MYVIMRC " Reload vimrc config
 command! Vimrc :vs $MYVIMRC           " opens vim config anywhere
