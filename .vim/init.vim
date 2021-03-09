@@ -9,7 +9,7 @@
 "
 
 call plug#begin()
-Plug 'sheerun/vim-polyglot'
+"Plug 'sheerun/vim-polyglot'
 
 " LSP
 Plug 'neovim/nvim-lspconfig'
@@ -55,6 +55,9 @@ Plug 'clojure-vim/vim-jack-in'
 Plug 'radenling/vim-dispatch-neovim'
 Plug 'tpope/vim-salve'
 Plug 'luochen1990/rainbow'
+Plug 'tpope/vim-fireplace'
+Plug 'clojure-vim/clojure.vim'
+Plug 'jrdoane/vim-clojure-highlight'
 " structural edition
 Plug 'guns/vim-sexp', { 'for': 'clojure' } | Plug 'tpope/vim-sexp-mappings-for-regular-people', { 'for': 'clojure' }
 call plug#end()
@@ -70,7 +73,7 @@ endif
 set t_Co=256
 
 " Theme
-syntax enable
+syntax on
 filetype plugin indent on
 colorscheme gruvbox
 set background=dark
@@ -166,3 +169,11 @@ command! Vimrc :vs $MYVIMRC           " opens vim config anywhere
 function! FormatJSON()
 :%!python -m json.tool
 endfunction
+
+" Evaluate Clojure buffers on load
+autocmd BufRead *.clj try | silent! Require | catch /^Fireplace/ | endtry
+
+" autocmd Syntax clojure EnableSyntaxExtensios
+
+autocmd VimEnter *       RainbowToggle
+autocmd Syntax   clojure RainbowToggle
