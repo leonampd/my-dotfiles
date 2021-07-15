@@ -36,6 +36,7 @@ alias gc="git checkout"
 alias ll="ls -lha"
 alias gl="git log --oneline --decorate"
 alias dc="docker-compose"
+alias mux="tmuxinator"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
