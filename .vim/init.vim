@@ -46,9 +46,7 @@ Plug 'lfv89/vim-interestingwords'
 " WakaTime
 Plug 'wakatime/vim-wakatime'
 
-Plug 'metakirby5/codi.vim'
-
-Plug 'Olical/conjure', {'tag': 'v4.14.1'}
+Plug 'Olical/conjure', {'tag': 'v4.28.0'}
 Plug 'm00qek/completion-conjure'
 Plug 'tpope/vim-dispatch'
 Plug 'clojure-vim/vim-jack-in'
@@ -57,6 +55,10 @@ Plug 'tpope/vim-salve'
 Plug 'luochen1990/rainbow'
 " structural edition
 Plug 'guns/vim-sexp', { 'for': 'clojure' } | Plug 'tpope/vim-sexp-mappings-for-regular-people', { 'for': 'clojure' }
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
+
+" use . to repeat plugin mappings
+Plug 'tpope/vim-repeat'
 call plug#end()
 
 " For Neovim 0.1.3 and 0.1.4
@@ -77,11 +79,6 @@ set background=dark
 
 let g:airline_theme='gruvbox'
 let g:airline_powerline_fonts=1
-
-" Setup LSP
-lua << EOF
-  require'lspconfig'.clojure_lsp.setup{ on_attach=require'completion'.on_attach }
-EOF
 
 " set completeopt to have a better completion experience
 set completeopt=menuone,noinsert,noselect
@@ -123,17 +120,67 @@ let g:completion_auto_change_source = 1
 let g:completion_chain_complete_list = {'clojure': [{'complete_items': ['conjure', 'lsp', 'snippet']}]}
 " Set completion list to match using fuzzy strategy
 let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
+let g:completion_enable_auto_popup = 1
+let g:completion_confirm_key = ""
 
 """"""""""""""""""""""""""""""
 " Key bindings
 
-nnoremap <silent> K <cmd>lua vim.lsp.buf.hover()<CR>
-nnoremap <silent> <c-]> <cmd>lua vim.lsp.buf.definition()<CR>
+lua << EOF
+local nvim_lsp = require('lspconfig')
 
-nnoremap <silent> gr <cmd>lua vim.lsp.buf.references()<CR>
-nnoremap <silent> g0 <cmd>lua vim.lsp.buf.document_symbol()<CR>
-nnoremap <silent> gW <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
-nnoremap <silent> gA <cmd>lua vim.lsp.buf.code_action()<CR>
+-- Use an on_attach function to only map the following keys
+-- after the language server attaches to the current buffer
+local on_attach = function(client, bufnr)
+  local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
+  local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
+
+  -- Enable completion triggered by <c-x><c-o>
+  buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
+
+  -- Mappings.
+  local opts = { noremap=true, silent=true }
+
+  -- See `:help vim.lsp.*` for documentation on any of the below functions
+  buf_set_keymap('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
+  buf_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
+  buf_set_keymap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
+  buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
+  buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+  buf_set_keymap('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
+  buf_set_keymap('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
+  buf_set_keymap('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
+  buf_set_keymap('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
+  buf_set_keymap('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
+  buf_set_keymap('n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+  buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
+  buf_set_keymap('n', '<space>e', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
+  buf_set_keymap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
+  buf_set_keymap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
+  buf_set_keymap('n', '<space>d', '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
+  buf_set_keymap('n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
+end
+
+-- Use a loop to conveniently call 'setup' on multiple servers and
+-- map buffer local keybindings when the language server attaches
+local servers = { 'pyright', 'rust_analyzer', 'tsserver', 'clojure_lsp' }
+for _, lsp in ipairs(servers) do
+  nvim_lsp[lsp].setup {
+    on_attach = on_attach,
+    flags = {
+      debounce_text_changes = 150,
+    }
+  }
+end
+EOF
+
+" Use <Tab> and <S-Tab> to navigate through popup menu
+inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+" avoid breaking lines on completion confirm
+imap <expr> <cr>  pumvisible() ? complete_info()["selected"] != "-1" ?
+                 \ "\<Plug>(completion_confirm_completion)"  : "\<c-e>\<CR>" :  "\<CR>"
 
 " better esc
 inoremap jk <ESC>
@@ -149,10 +196,6 @@ nmap <silent> <leader>rp :RainbowToggle<R>
 
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
-
-" sublime fuzzyfinder like
-map <C-p> :call fzf#run({'sink': 'e'})<CR>
-nnoremap <silent> <C-t> :call fzf#run({'sink':'tabe','down':'30%'})<CR>
 
 " telescope keybindings
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
@@ -171,3 +214,30 @@ endfunction
 
 autocmd VimEnter *       RainbowToggle
 autocmd Syntax   clojure RainbowToggle
+
+lua << EOF
+  vim.g.clojure_syntax_keywords = {
+    clojureSpecial = {
+      "defproject", "deftest", "defspec", "defflow", "defplugin", "s/deftest",
+      "s/def", "s/defn", "s/defrecord", "s/defschema", "s/fn", "h/defc",
+    },
+    clojureMacro = { "testing", "is", "are", "fact", "facts", "flow", "s/with-fn-validation" }
+  }
+
+  vim.g.clojure_fuzzy_indent_patterns = {"^with", "^def", "^let", "^flow", "^fact", "^tabular" }
+
+  vim.g.clojure_special_indent_words =
+  "deftype,defrecord,reify,proxy,extend-type,extend-protocol,letfn" ..
+  ",defplugin,p,div,dom,dom/p,dom/div"
+EOF
+
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = { "bash", "clojure", "javascript", "json", "python", "regex", "php"}, -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+  ignore_install = {}, -- List of parsers to ignore installing
+  highlight = {
+    enable = true,              -- false will disable the whole extension
+    disable = {},  -- list of language that will be disabled
+  },
+}
+EOF

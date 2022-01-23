@@ -73,3 +73,6 @@ export GPG_TTY=$(tty)
 export PINENTRY_USER_DATA="USE_CURSES=1"
 
 source ~/.nurc
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+eval $(thefuck --alias)
