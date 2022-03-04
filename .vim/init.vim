@@ -46,7 +46,7 @@ Plug 'lfv89/vim-interestingwords'
 " WakaTime
 Plug 'wakatime/vim-wakatime'
 
-Plug 'Olical/conjure', {'tag': 'v4.28.0'}
+Plug 'Olical/conjure', {'tag': 'v4.30.1'}
 Plug 'm00qek/completion-conjure'
 Plug 'tpope/vim-dispatch'
 Plug 'clojure-vim/vim-jack-in'
@@ -59,6 +59,12 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend upda
 
 " use . to repeat plugin mappings
 Plug 'tpope/vim-repeat'
+
+" Open files on github
+Plug 'ruanyl/vim-gh-line'
+
+" git blame
+Plug 'APZelos/blamer.nvim'
 call plug#end()
 
 " For Neovim 0.1.3 and 0.1.4
@@ -79,6 +85,7 @@ set background=dark
 
 let g:airline_theme='gruvbox'
 let g:airline_powerline_fonts=1
+let g:blamer_enabled = 1
 
 " set completeopt to have a better completion experience
 set completeopt=menuone,noinsert,noselect
@@ -122,6 +129,9 @@ let g:completion_chain_complete_list = {'clojure': [{'complete_items': ['conjure
 let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
 let g:completion_enable_auto_popup = 1
 let g:completion_confirm_key = ""
+
+" Copy the github link instead of open in the browser
+let g:gh_open_command = 'fn() { echo "$@" | pbcopy; }; fn '
 
 """"""""""""""""""""""""""""""
 " Key bindings
