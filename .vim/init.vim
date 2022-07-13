@@ -22,6 +22,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-telescope/telescope-ui-select.nvim'
 
 " theme
 Plug 'morhetz/gruvbox'
@@ -139,6 +140,17 @@ let g:gh_open_command = 'fn() { echo "$@" | pbcopy; }; fn '
 lua << EOF
 local nvim_lsp = require('lspconfig')
 
+-- This is your opts table
+require("telescope").setup {
+  extensions = {
+    ["ui-select"] = {
+      require("telescope.themes").get_dropdown {
+      }
+    }
+  }
+}
+require("telescope").load_extension("ui-select")
+
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
@@ -168,7 +180,7 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
 
   -- telescope
-  buf_set_keymap('n', '<space>ca', "<cmd>lua require('telescope.builtin').lsp_code_actions(require('telescope.themes').get_cursor())<CR>", opts)
+  buf_set_keymap('n', '<space>ca', "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
   buf_set_keymap('n', 'gr', "<cmd>lua require('telescope.builtin').lsp_references()<CR>", opts)
   buf_set_keymap('n', 'gi', "<cmd>lua require('telescope.builtin').lsp_implementations()<CR>", opts)
 end
