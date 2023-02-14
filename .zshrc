@@ -37,6 +37,7 @@ alias ll="ls -lha"
 alias gl="git log --oneline --decorate"
 alias dc="docker-compose"
 alias mux="tmuxinator"
+alias clj-repl="lein with-profiles +repl repl :headless"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
@@ -73,6 +74,9 @@ export GPG_TTY=$(tty)
 export PINENTRY_USER_DATA="USE_CURSES=1"
 
 source ~/.nurc
+
+autoload -Uz compinit bashcompinit && compinit && bashcompinit
+source "$NU_HOME/nucli/nu.bashcompletion"
 
 . /usr/local/opt/asdf/libexec/asdf.sh
 eval $(thefuck --alias)
