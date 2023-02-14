@@ -54,6 +54,7 @@ Plug 'clojure-vim/vim-jack-in'
 Plug 'radenling/vim-dispatch-neovim'
 Plug 'tpope/vim-salve'
 Plug 'luochen1990/rainbow'
+Plug 'm00qek/baleia.nvim', { 'tag': 'v1.2.0' }
 " structural edition
 Plug 'guns/vim-sexp', { 'for': 'clojure' } | Plug 'tpope/vim-sexp-mappings-for-regular-people', { 'for': 'clojure' }
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
@@ -134,6 +135,11 @@ let g:completion_confirm_key = ""
 " Copy the github link instead of open in the browser
 let g:gh_open_command = 'fn() { echo "$@" | pbcopy; }; fn '
 
+
+" tell Conjure to not strip ANSI sequences
+let g:conjure#log#strip_ansi_escape_sequences_line_limit = 0
+let s:baleia = luaeval("require('baleia').setup { line_starts_at = 3 }")
+
 """"""""""""""""""""""""""""""
 " Key bindings
 
@@ -210,7 +216,7 @@ imap <expr> <cr>  pumvisible() ? complete_info()["selected"] != "-1" ?
 inoremap jk <ESC>
 
 " better write
-nnoremap <leader>w :w<CR>
+nnoremap <leader>w :wa<CR>
 
 " better quit
 nnoremap <leader>q :q<CR>
@@ -236,6 +242,8 @@ endfunction
 
 " autocmd Syntax clojure EnableSyntaxExtensios
 
+autocmd BufWinEnter conjure-log-* call s:baleia.automatically(bufnr('%'))
+
 autocmd VimEnter *       RainbowToggle
 autocmd Syntax   clojure RainbowToggle
 
@@ -245,7 +253,7 @@ lua << EOF
       "defproject", "deftest", "defspec", "defflow", "defplugin", "s/deftest",
       "s/def", "s/defn", "s/defrecord", "s/defschema", "s/fn", "h/defc",
     },
-    clojureMacro = { "testing", "is", "are", "fact", "facts", "flow", "s/with-fn-validation" }
+    clojureMacro = { "testing", "defflow", "is", "are", "fact", "facts", "flow", "s/with-fn-validation" }
   }
 
   vim.g.clojure_fuzzy_indent_patterns = {"^with", "^def", "^let", "^flow", "^fact", "^tabular" }
