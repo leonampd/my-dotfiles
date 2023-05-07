@@ -1,0 +1,24 @@
+# Use tall and fullscreen layouts
+layouts:
+    - tall
+    - fullscreen
+    - column
+
+# Add "command" to the default mods
+mod1:
+    - option
+    - shift
+    - control
+mod2:
+    - option
+    - shift
+    - control
+    - command
+
+# Enable focus-follows-mouse
+mouse-follows-focus: false
+focus-follows-mouse: true
+
+# Add 10px margin between windows
+window-margins: true
+window-margin-size: 4
