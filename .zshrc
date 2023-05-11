@@ -55,6 +55,13 @@ function nugo() {
     cd $(find ~/dev/nu/* -type d -maxdepth 0 | fzf)
 }
 
+function nudev() {
+    selected=$(find ~/dev/nu/* -maxdepth 0 -type d | fzf)
+    selected_name=$(basename "$selected" | tr . _)
+
+    tmuxinator start nudev -n $selected_name $selected
+}
+
 function proj() {
     cd $(find ~/dev/* -type d -maxdepth 0 | fzf)
 }
