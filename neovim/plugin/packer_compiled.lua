@@ -188,6 +188,26 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/leonam.dias/.local/share/nvim/site/pack/packer/start/vim-gitgutter",
     url = "https://github.com/airblade/vim-gitgutter"
+  },
+  ["vim-repeat"] = {
+    loaded = true,
+    path = "/Users/leonam.dias/.local/share/nvim/site/pack/packer/start/vim-repeat",
+    url = "https://github.com/tpope/vim-repeat"
+  },
+  ["vim-sexp"] = {
+    loaded = true,
+    path = "/Users/leonam.dias/.local/share/nvim/site/pack/packer/start/vim-sexp",
+    url = "https://github.com/guns/vim-sexp"
+  },
+  ["vim-sexp-mappings-for-regular-people"] = {
+    loaded = true,
+    path = "/Users/leonam.dias/.local/share/nvim/site/pack/packer/start/vim-sexp-mappings-for-regular-people",
+    url = "https://github.com/tpope/vim-sexp-mappings-for-regular-people"
+  },
+  ["vim-surround"] = {
+    loaded = true,
+    path = "/Users/leonam.dias/.local/share/nvim/site/pack/packer/start/vim-surround",
+    url = "https://github.com/tpope/vim-surround"
   }
 }
 
