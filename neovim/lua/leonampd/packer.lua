@@ -53,4 +53,17 @@ return require('packer').startup(function(use)
             {'m00qek/baleia.nvim'}
         }
     }
-end)  
+    use {
+        "tpope/vim-sexp-mappings-for-regular-people",
+        requires = {
+            {"guns/vim-sexp"},
+            {"tpope/vim-repeat"},
+            {"tpope/vim-surround"}
+        }
+    }
+
+    use {
+        'nvim-lualine/lualine.nvim',
+        requires = { 'nvim-tree/nvim-web-devicons', opt = true }
+    }
+end)
