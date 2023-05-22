@@ -6,6 +6,7 @@ require('cmp').setup{
 
 vim.g["conjure#log#strip_ansi_escape_sequences_line_limit"] = 0
 vim.g["conjure#log#botright"] = true
+vim.g["conjure#client#clojure#nrepl#test#current_form_names"] = {'deftest', "defflow"}
 
 local baleia = require('baleia').setup { line_starts_at = 3 }
 
