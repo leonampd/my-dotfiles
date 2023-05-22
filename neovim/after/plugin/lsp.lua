@@ -1,9 +1,10 @@
 local lsp = require("lsp-zero")
+local autocmd = vim.api.nvim_create_autocmd
 
 lsp.preset("recommended")
 
-lsp.on_attach(function (client, bufnr)
-    local opts = {buffer = bufnr, noremap = true, silent = true}
+lsp.on_attach(function(client, bufnr)
+    local opts = { buffer = bufnr, noremap = true, silent = true }
     local buf_set_keymap = vim.keymap.set
 
     -- See `:help vim.lsp.*` for documentation on any of the below functions
@@ -26,8 +27,13 @@ lsp.on_attach(function (client, bufnr)
     buf_set_keymap('n', '<space>ca', "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
     buf_set_keymap('n', 'gr', "<cmd>lua require('telescope.builtin').lsp_references()<CR>", opts)
     buf_set_keymap('n', 'gi', "<cmd>lua require('telescope.builtin').lsp_implementations()<CR>", opts)
+    buf_set_keymap('n', '<space>fs', "<cmd>lua require('telescope.builtin').lsp_document_symbols()<CR>", opts)
 end)
 
 lsp.nvim_workspace()
 
 lsp.setup()
+
+autocmd({ "BufEnter", "InsertLeave" }, {
+    callback = function() vim.lsp.codelens.refresh() end
+})
