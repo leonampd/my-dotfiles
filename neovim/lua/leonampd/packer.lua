@@ -66,4 +66,7 @@ return require('packer').startup(function(use)
         'nvim-lualine/lualine.nvim',
         requires = { 'nvim-tree/nvim-web-devicons', opt = true }
     }
+
+    use {'hrsh7th/vim-vsnip'}
+    use {'lfv89/vim-interestingwords'}
 end)

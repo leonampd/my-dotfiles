@@ -1,0 +1,23 @@
+prSections:
+- title: My PRs
+  filters: is:open author:@me
+- title: Needs my review
+  filters: is:pr is:open user-review-requested:@me NOT nubank-bumpito
+- title: Eligibility PRs
+  filters: is:open is:pr repo:nubank/elysium repo:nubank/credit-card-eligibility repo:nubank/lineuzinho repo:nubank/mendonca repo:nubank/cc-eligibility-deduper repo:nubank/dona-nene repo:nubank/agostinho NOT Bump
+- title: Eligibility - Needs my review (Bump)
+  filters: is:open is:pr repo:nubank/elysium repo:nubank/credit-card-eligibility repo:nubank/lineuzinho repo:nubank/mendonca repo:nubank/cc-eligibility-deduper repo:nubank/dona-nene repo:nubank/agostinho author:app/nubank-bumpito Bump
+- title: Needs my review (Bump)
+  filters: is:open is:pr review-requested:@me review:none author:app/nubank-bumpito BUMP
+issuesSections:
+- title: My Issues
+  filters: is:open author:@me
+- title: Assigned
+  filters: is:open assignee:@me
+defaults:
+  preview:
+    open: true
+    width: 60
+  prsLimit: 30
+  issuesLimit: 20
+  view: prs

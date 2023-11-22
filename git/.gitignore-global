@@ -54,6 +54,7 @@ node-dependencies-*-prod
 .lein*
 .clj-kondo
 target
+conjure*
 ####
 
 ####

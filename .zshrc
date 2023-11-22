@@ -87,3 +87,5 @@ source "$NU_HOME/nucli/nu.bashcompletion"
 
 . /usr/local/opt/asdf/libexec/asdf.sh
 eval $(thefuck --alias)
+export PATH="/usr/local/sbin:$PATH"
+eval "$(pyenv init -)"
