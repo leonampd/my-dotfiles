@@ -45,7 +45,7 @@ function proj() {
 }
 
 function dotfiles() {
-  cd ~/my-dotfiles && nvim .
+  cd ~/dev/leonam/my-dotfiles && nvim .
 }
 
 function restartgpg() {
@@ -71,7 +71,7 @@ plugins=(
   git
   bgnotify
   zsh-autosuggestions
-  zsh-autosuggestions
+  zsh-syntax-highlighting
   docker
   z
   web-search
