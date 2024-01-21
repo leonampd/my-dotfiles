@@ -1,5 +1,18 @@
+require("mason").setup()
+require("mason-lspconfig").setup()
+
 local lsp = require("lsp-zero")
 local autocmd = vim.api.nvim_create_autocmd
+
+require('mason-lspconfig').setup({
+    handlers = {
+        lsp.default_setup,
+        lua_ls = function()
+            local lua_opts = lsp.nvim_lua_ls()
+            require('lspconfig').lua_ls.setup(lua_opts)
+        end,
+    },
+})
 
 lsp.preset("recommended")
 
@@ -29,8 +42,6 @@ lsp.on_attach(function(client, bufnr)
     buf_set_keymap('n', 'gi', "<cmd>lua require('telescope.builtin').lsp_implementations()<CR>", opts)
     buf_set_keymap('n', '<space>fs', "<cmd>lua require('telescope.builtin').lsp_document_symbols()<CR>", opts)
 end)
-
-lsp.nvim_workspace()
 
 lsp.setup()
 
