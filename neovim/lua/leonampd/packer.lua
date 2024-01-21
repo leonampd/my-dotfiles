@@ -18,7 +18,9 @@ return require('packer').startup(function(use)
     use({"airblade/vim-gitgutter"})
     use {
         "windwp/nvim-autopairs",
-        config = function() require("nvim-autopairs").setup {} end
+        requires = {
+            {'hrsh7th/nvim-cmp'}
+        }
     }
 	use({"APZelos/blamer.nvim"})
 	use({"ruanyl/vim-gh-line"})
