@@ -8,17 +8,18 @@ return require('packer').startup(function(use)
 	use 'wbthomason/packer.nvim'
 
 	use {
-		'nvim-telescope/telescope.nvim', tag = '0.1.1',
-		-- or                            , branch = '0.1.x',
+		'nvim-telescope/telescope.nvim',
 		requires = { {'nvim-lua/plenary.nvim'} }
 	}
 
     use { "ellisonleao/gruvbox.nvim" }
 
 	use({"nvim-treesitter/nvim-treesitter", {run = ':TSUpdate'}})
-
-	use({"airblade/vim-gitgutter"})
-	use({"jiangmiao/auto-pairs"})
+    use({"airblade/vim-gitgutter"})
+    use {
+        "windwp/nvim-autopairs",
+        config = function() require("nvim-autopairs").setup {} end
+    }
 	use({"APZelos/blamer.nvim"})
 	use({"ruanyl/vim-gh-line"})
 
