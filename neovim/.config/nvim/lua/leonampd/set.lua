@@ -30,3 +30,6 @@ vim.opt.clipboard = "unnamedplus"
 vim.opt.cmdheight = 4
 
 vim.g.netrw_banner = 0
+
+vim.o.background = "dark" -- or "light" for light mode
+vim.cmd([[colorscheme gruvbox]])
