@@ -10,7 +10,7 @@ apps_brew=(
     git
     stow
     neovim
-    clojure-lsp
+    clojure-lsp/brew/clojure-lsp-native
     tmux
     tmuxinator
     bat
