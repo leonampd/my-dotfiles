@@ -5,3 +5,5 @@ vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 vim.keymap.set("n", "<leader>w", vim.cmd.w)
 vim.keymap.set("n", "<leader>q", vim.cmd.q)
 vim.keymap.set("i", "jk", "<Esc>", { noremap = true })
+
+vim.keymap.set("n", "<localeader>tt", vim.cmd.ConjureCljRunCurrentTest, { noremap = true })
