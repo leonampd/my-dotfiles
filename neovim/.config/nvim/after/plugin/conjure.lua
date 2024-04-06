@@ -5,6 +5,7 @@ require('cmp').setup{
 }
 
 vim.g["conjure#log#strip_ansi_escape_sequences_line_limit"] = 0
+vim.g["conjure#log#botright"] = true
 local baleia = require('baleia').setup { line_starts_at = 3 }
 
 local augroup = vim.api.nvim_create_augroup
