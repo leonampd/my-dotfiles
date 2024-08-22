@@ -26,6 +26,8 @@ alias mux="tmuxinator"
 alias clj-repl="lein with-profiles +repl repl :headless"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+source <(fzf --zsh)
+source <(kubectl completion zsh)
 
 export PATH="/usr/local/opt/ncurses/bin:$PATH"
 
