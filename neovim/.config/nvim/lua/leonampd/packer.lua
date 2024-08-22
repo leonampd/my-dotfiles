@@ -78,4 +78,11 @@ return require('packer').startup(function(use)
 
     use {'hrsh7th/vim-vsnip'}
     use {'lfv89/vim-interestingwords'}
+
+    use {
+        'nvim-tree/nvim-tree.lua',
+        requires = {
+            'nvim-tree/nvim-web-devicons', -- optional
+        },
+    }
 end)
