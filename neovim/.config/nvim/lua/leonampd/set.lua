@@ -1,8 +1,9 @@
 vim.opt.nu = true
 vim.opt.relativenumber = true
 
-vim.opt.tabstop = 4
-vim.opt.softtabstop = 4
+local TAB_WIDTH = 2
+vim.opt.tabstop = TAB_WIDTH
+vim.opt.softtabstop = TAB_WIDTH
 vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 
