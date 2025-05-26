@@ -4,17 +4,17 @@
 vim.cmd [[packadd packer.nvim]]
 
 return require('packer').startup(function(use)
-	-- Packer can manage itself
-	use 'wbthomason/packer.nvim'
+    -- Packer can manage itself
+    use 'wbthomason/packer.nvim'
 
-	use {
-		'nvim-telescope/telescope.nvim',
-		requires = { {'nvim-lua/plenary.nvim'} }
-	}
+    use {
+        'nvim-telescope/telescope.nvim',
+        requires = { {'nvim-lua/plenary.nvim'} }
+    }
 
     use { "ellisonleao/gruvbox.nvim" }
 
-	use({"nvim-treesitter/nvim-treesitter", {run = ':TSUpdate'}})
+    use({"nvim-treesitter/nvim-treesitter", {run = ':TSUpdate'}})
     use({"airblade/vim-gitgutter"})
     use {
         "windwp/nvim-autopairs",
@@ -22,17 +22,14 @@ return require('packer').startup(function(use)
             {'hrsh7th/nvim-cmp'}
         }
     }
-	use({"APZelos/blamer.nvim"})
-	use({"ruanyl/vim-gh-line"})
+    use({"APZelos/blamer.nvim"})
+    use({"ruanyl/vim-gh-line"})
 
     use {
-        'VonHeikemen/lsp-zero.nvim',
-        branch = 'v1.x',
+        'williamboman/mason-lspconfig.nvim',
         requires = {
-            -- LSP Support
-            {'neovim/nvim-lspconfig'},             -- Required
-            {'williamboman/mason.nvim'},           -- Optional
-            {'williamboman/mason-lspconfig.nvim'}, -- Optional
+            {"mason-org/mason.nvim", opts = {} },
+            {"neovim/nvim-lspconfig"},
 
             -- Autocompletion
             {'hrsh7th/nvim-cmp'},         -- Required
@@ -50,7 +47,8 @@ return require('packer').startup(function(use)
                 version = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
                 -- install jsregexp (optional!).
                 build = "make install_jsregexp"
-            }
+            },
+            {"saadparwaiz1/cmp_luasnip"}
         }
     }
 
