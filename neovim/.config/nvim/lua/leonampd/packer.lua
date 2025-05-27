@@ -88,7 +88,18 @@ return require('packer').startup(function(use)
         branch = "harpoon2",
         requires = { {"nvim-lua/plenary.nvim"} }
     }
+    -- Avante.nvim with build process
     use {
-        "github/copilot.vim"
+        'yetone/avante.nvim',
+        branch = 'main',
+        run = 'make',
+        requires = {
+            {'nvim-treesitter/nvim-treesitter'},
+            {'stevearc/dressing.nvim'},
+            {'nvim-lua/plenary.nvim'},
+            {'MunifTanjim/nui.nvim'},
+            {'MeanderingProgrammer/render-markdown.nvim'},
+            {'zbirenbaum/copilot.lua'}
+        },
     }
 end)
