@@ -102,4 +102,28 @@ return require('packer').startup(function(use)
             {'zbirenbaum/copilot.lua'}
         },
     }
+
+    use {
+        "ravitemer/mcphub.nvim",
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+        },
+        build = "npm install -g mcp-hub@latest",  -- Installs `mcp-hub` node binary globally
+        config = function()
+            require("mcphub").setup({
+                config = vim.fn.expand("~/.cursor/mcp.json"),
+            })
+        end
+    }
+
+    use {
+        "editor-code-assistant/eca-nvim",
+        requires = {
+            "MunifTanjim/nui.nvim",   -- Required: UI framework
+            "nvim-lua/plenary.nvim",  -- Optional: Enhanced async operations
+        },
+        config = function()
+            require("eca").setup()
+        end
+    }
 end)

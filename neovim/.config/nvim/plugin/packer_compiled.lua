@@ -80,7 +80,6 @@ _G.packer_plugins = {
     url = "https://github.com/L3MON4D3/LuaSnip"
   },
   ["avante.nvim"] = {
-    config = { "\27LJ\2\n4\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\vavante\frequire\0" },
     loaded = true,
     path = "/Users/leonam.dias/.local/share/nvim/site/pack/packer/start/avante.nvim",
     url = "https://github.com/yetone/avante.nvim"
@@ -164,6 +163,12 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/leonam.dias/.local/share/nvim/site/pack/packer/start/mason.nvim",
     url = "https://github.com/mason-org/mason.nvim"
+  },
+  ["mcphub.nvim"] = {
+    config = { "\27LJ\2\nƒ\1\0\0\6\0\t\0\r6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\a\0006\3\3\0009\3\4\0039\3\5\3'\5\6\0B\3\2\2=\3\b\2B\0\2\1K\0\1\0\vconfig\1\0\1\vconfig\0\23~/.cursor/mcp.json\vexpand\afn\bvim\nsetup\vmcphub\frequire\0" },
+    loaded = true,
+    path = "/Users/leonam.dias/.local/share/nvim/site/pack/packer/start/mcphub.nvim",
+    url = "https://github.com/ravitemer/mcphub.nvim"
   },
   ["nui.nvim"] = {
     loaded = true,
@@ -264,10 +269,10 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: avante.nvim
-time([[Config for avante.nvim]], true)
-try_loadstring("\27LJ\2\n4\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\vavante\frequire\0", "config", "avante.nvim")
-time([[Config for avante.nvim]], false)
+-- Config for: mcphub.nvim
+time([[Config for mcphub.nvim]], true)
+try_loadstring("\27LJ\2\nƒ\1\0\0\6\0\t\0\r6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\a\0006\3\3\0009\3\4\0039\3\5\3'\5\6\0B\3\2\2=\3\b\2B\0\2\1K\0\1\0\vconfig\1\0\1\vconfig\0\23~/.cursor/mcp.json\vexpand\afn\bvim\nsetup\vmcphub\frequire\0", "config", "mcphub.nvim")
+time([[Config for mcphub.nvim]], false)
 
 _G._packer.inside_compile = false
 if _G._packer.needs_bufread == true then
