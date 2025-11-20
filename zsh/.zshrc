@@ -80,3 +80,22 @@ plugins=(
   web-search
   lein
 )
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/Users/leonam.dias/miniforge3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/Users/leonam.dias/miniforge3/etc/profile.d/conda.sh" ]; then
+        . "/Users/leonam.dias/miniforge3/etc/profile.d/conda.sh"
+    else
+        export PATH="/Users/leonam.dias/miniforge3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
+# asdf
+export ASDF_DATA_DIR="/home/leonam.dias/.asdf"
+export PATH="$ASDF_DATA_DIR/shims:$PATH"
