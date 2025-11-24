@@ -99,3 +99,8 @@ unset __conda_setup
 # asdf
 export ASDF_DATA_DIR="/home/leonam.dias/.asdf"
 export PATH="$ASDF_DATA_DIR/shims:$PATH"
+
+. "$HOME/.local/bin/env"
+
+#Enable Babashka in Nucli
+export NUCLI_BB_ENABLED=t
