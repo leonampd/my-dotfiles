@@ -1,0 +1,16 @@
+background = 282c34
+foreground = ffffff
+
+font-family = "Roboto Mono For Powerline"
+font-size = 16
+
+theme = Catppuccin Frappe
+
+clipboard-paste-protection = true
+copy-on-select = clipboard
+
+shell-integration = zsh
+
+auto-update = check
+
+app-notifications = true
